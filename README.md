@@ -1,0 +1,2 @@
+# sdk
+EyeSeeTea Android SDK
