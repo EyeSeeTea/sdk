@@ -1,0 +1,34 @@
+<!--
+  ~ Copyright (c) 2015.
+  ~
+  ~ This file is part of QIS Surveillance App App.
+  ~
+  ~  QIS Surveillance App App is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation, either version 3 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  QIS Surveillance App App is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with QIS Surveillance App.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+
+    <!-- EditCard: Text field editable with adaptative text size and text font-->
+    <declare-styleable name="CustomFont">
+        <attr name="font_name" format="string|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="FontStyle">
+        <attr name="font_xsmall" format="dimension" />
+        <attr name="font_small" format="dimension" />
+        <attr name="font_medium" format="dimension" />
+        <attr name="font_large" format="dimension" />
+        <attr name="font_xlarge" format="dimension" />
+    </declare-styleable>
+</resources>
