@@ -10,9 +10,6 @@ import org.eyeseetea.sdk.R;
 
 public class CustomTextView extends TextView implements IEyeSeeView {
 
-    private String mfontName = null;
-    private TypedArray mTypedArray;
-
     public CustomTextView(Context context) {
         super(context);
         init(null, 0);
@@ -33,27 +30,11 @@ public class CustomTextView extends TextView implements IEyeSeeView {
             return;
         }
 
-        if (attrs != null) {
-            mTypedArray = getContext().obtainStyledAttributes(attrs, R.styleable.CustomFont, defStyle, 0);
-            try {
-                mfontName = mTypedArray.getString(R.styleable.CustomFont_font_name);
-                if (mfontName != null) {
-                    setTypeface(TypefaceCache.getInstance().getTypeface(mfontName, getContext()));
-                }
-
-            }
-            finally {
-                mTypedArray.recycle();
-            }
-        }
+        CustomViewFontHelper.setFontName(this,attrs,defStyle);
     }
 
-    public String getFontName() {
-        return mfontName;
-    }
-
-    public void setFontName(String mFontName) {
-        this.mfontName = mfontName;
+    public void setFontName(String fontName) {
+        CustomViewFontHelper.setFontName(this,fontName);
     }
 }
 

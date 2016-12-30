@@ -19,10 +19,17 @@
 
 <resources>
 
-    <!-- EditCard: Text field editable with adaptative text size and text font-->
+
     <declare-styleable name="CustomFont">
         <attr name="font_name" format="string|reference" />
     </declare-styleable>
+
+    <!--This attributes must to be used in this mode:
+        android:textSize="?attr/font_medium"
+        For avoid errors where this custom attributes are not found
+        Views using this custom attributes must to be inflated from ActivityContext
+        not from Application context. More info
+        http://stackoverflow.com/questions/26524048/upgrading-to-sdk-21-error-inflating-class-android-support-v7-internal-widget-a/27999606#27999606-->
 
     <declare-styleable name="FontStyle">
         <attr name="font_xsmall" format="dimension" />

@@ -19,16 +19,11 @@
 package org.eyeseetea.sdk.presentation.views;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Typeface;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Cache for typefaces to avoid building them from resources each time
- * Created by arrizabalaga on 27/07/16.
- */
 public class TypefaceCache {
     public static final String FONTS_PATH = "fonts/";
     private static TypefaceCache instance;
