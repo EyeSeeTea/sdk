@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FontStyle">
+    </style>
+
+    <style name="FontStyle.XSmall">
+        <item name="font_xsmall">@dimen/xsmall_xsmall_text_size</item>
+        <item name="font_small">@dimen/xsmall_small_text_size</item>
+        <item name="font_medium">@dimen/xsmall_medium_text_size</item>
+        <item name="font_large">@dimen/xsmall_large_text_size</item>
+        <item name="font_xlarge">@dimen/xsmall_xlarge_text_size</item>
+    </style>
+
+    <style name="FontStyle.Small">
+        <item name="font_xsmall">@dimen/small_xsmall_text_size</item>
+        <item name="font_small">@dimen/small_small_text_size</item>
+        <item name="font_medium">@dimen/small_medium_text_size</item>
+        <item name="font_large">@dimen/small_large_text_size</item>
+        <item name="font_xlarge">@dimen/small_xlarge_text_size</item>
+    </style>
+
+    <style name="FontStyle.Medium">
+        <item name="font_xsmall">@dimen/medium_xsmall_text_size</item>
+        <item name="font_small">@dimen/medium_small_text_size</item>
+        <item name="font_medium">@dimen/medium_medium_text_size</item>
+        <item name="font_large">@dimen/medium_large_text_size</item>
+        <item name="font_xlarge">@dimen/medium_xlarge_text_size</item>
+    </style>
+
+    <style name="FontStyle.Large">
+        <item name="font_xsmall">@dimen/large_xsmall_text_size</item>
+        <item name="font_small">@dimen/large_small_text_size</item>
+        <item name="font_medium">@dimen/large_medium_text_size</item>
+        <item name="font_large">@dimen/large_large_text_size</item>
+        <item name="font_xlarge">@dimen/large_xlarge_text_size</item>
+    </style>
+
+    <style name="FontStyle.XLarge">
+        <item name="font_xsmall">@dimen/extra_xsmall_text_size</item>
+        <item name="font_small">@dimen/extra_small_text_size</item>
+        <item name="font_medium">@dimen/extra_medium_text_size</item>
+        <item name="font_large">@dimen/extra_large_text_size</item>
+        <item name="font_xlarge">@dimen/extra_xlarge_text_size</item>
+    </style>
+
+    <style name="FontStyle.Default">
+        <item name="font_xsmall">@dimen/default_xsmall_text_size</item>
+        <item name="font_small">@dimen/default_small_text_size</item>
+        <item name="font_medium">@dimen/default_medium_text_size</item>
+        <item name="font_large">@dimen/default_large_text_size</item>
+        <item name="font_xlarge">@dimen/default_xlarge_text_size</item>
+    </style>
+</resources>
