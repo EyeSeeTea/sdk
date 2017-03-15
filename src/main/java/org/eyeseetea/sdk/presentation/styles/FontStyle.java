@@ -3,7 +3,7 @@ package org.eyeseetea.sdk.presentation.styles;
 import org.eyeseetea.sdk.R;
 
 public enum FontStyle {
-    XSmall(R.style.FontStyle_Small, "XSmall"),
+    XSmall(R.style.FontStyle_XSmall, "XSmall"),
     Small(R.style.FontStyle_Small, "Small"),
     Medium(R.style.FontStyle_Medium, "Medium"),
     Large(R.style.FontStyle_Large, "Large"),
