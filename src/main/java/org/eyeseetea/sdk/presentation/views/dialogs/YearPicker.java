@@ -15,7 +15,7 @@ import org.eyeseetea.sdk.presentation.views.CustomNumberPicker;
 import java.util.Calendar;
 
 public class YearPicker extends DialogFragment {
-    private int yearInterval = 200;
+    private int mYearInterval = 120;
 
     private OnYearSelectedListener mOnYearSelectedListener;
     private CustomNumberPicker mNumberPicker;
@@ -32,6 +32,10 @@ public class YearPicker extends DialogFragment {
         setMaxMinYears();
         initViews(dialog);
         return dialog;
+    }
+
+    public void setInterval (int yearInterval){
+        mYearInterval = yearInterval;
     }
 
     private void initViews(final Dialog dialog) {
@@ -61,7 +65,7 @@ public class YearPicker extends DialogFragment {
     private void setMaxMinYears() {
         Calendar calendar = Calendar.getInstance();
         if (maxYear == 0) maxYear = calendar.get(Calendar.YEAR);
-        if (minYear == 0) minYear = maxYear - yearInterval;
+        if (minYear == 0) minYear = maxYear - mYearInterval;
     }
 
 
@@ -98,7 +102,7 @@ public class YearPicker extends DialogFragment {
 
 
     public void setYearInterval(int yearInterval) {
-        this.yearInterval = yearInterval;
+        this.mYearInterval = yearInterval;
         setMaxMinYears();
     }
 
