@@ -22,7 +22,10 @@ package org.eyeseetea.sdk.presentation.fileio;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
+import android.graphics.Bitmap;
+import android.media.MediaMetadataRetriever;
 import android.net.Uri;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -143,7 +146,28 @@ public class FileIOUtils {
         return filename.substring(0, filename.lastIndexOf("."));
     }
 
-
-
+    public static Bitmap getVideoPreview(String path) {
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        File mediaFile = new File(path);
+        if (!mediaFile.exists()) {//load from raw
+            AssetFileDescriptor afd = FileIOUtils.getAssetFileDescriptorFromRaw(
+                    path);
+            retriever.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+        } else {
+            retriever.setDataSource(mediaFile.getAbsolutePath());
+        }
+        try {
+            return retriever.getFrameAtTime(10000000, MediaMetadataRetriever.OPTION_CLOSEST);
+        } catch (RuntimeException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                retriever.release();
+            } catch (RuntimeException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return null;
+    }
 
 }
