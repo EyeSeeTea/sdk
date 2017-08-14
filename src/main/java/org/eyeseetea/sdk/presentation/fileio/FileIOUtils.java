@@ -170,4 +170,11 @@ public class FileIOUtils {
         return null;
     }
 
+    public static void removeFile(String path) {
+        File file = new File(path);
+        if(file.exists()){
+            file.delete();
+            System.out.println("File removed "+ path);
+        }
+    }
 }
