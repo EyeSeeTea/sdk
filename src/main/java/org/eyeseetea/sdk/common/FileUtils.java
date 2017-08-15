@@ -17,15 +17,12 @@
  *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.eyeseetea.sdk.presentation.fileio;
+package org.eyeseetea.sdk.common;
 
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
-import android.graphics.Bitmap;
-import android.media.MediaMetadataRetriever;
 import android.net.Uri;
-import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -34,22 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.channels.FileChannel;
 
-public class FileIOUtils {
-
-    static String mPackageName;
-    static String mAppDatabaseName;
-    static Context mContext;
-
-    public static void init(Context context, String packageName, String appDatabaseName){
-        mContext = context;
-        mPackageName = packageName;
-        mAppDatabaseName = appDatabaseName;
-    }
-    
-    /**
-     * Databases folder
-     */
-    private final static String DATABASE_FOLDER = "databases/";
+public class FileUtils {
 
     /**
      * This method copy a file in other file
@@ -81,93 +63,41 @@ public class FileIOUtils {
         }
     }
 
-
-    /**
-     * This method returns the databases app folder
-     */
-    public static File getDatabasesFolder() {
-        String databasesPath = getAppPath() + DATABASE_FOLDER;
-        File file = new File(databasesPath);
-        return file;
-    }
-
-    /**
-     * This method returns the app path
-     */
-    public static String getAppPath() {
-        if (mPackageName == null) {
-            throw new IllegalArgumentException("You have to call init() method first");
-        }
-        return "/data/data/" + mPackageName + "/";
-
-    }
-
-    public static File getAppDatabaseFile() {
-        if (mAppDatabaseName == null) {
-            throw new IllegalArgumentException("You have to call init() method first");
-        }
-        return new File(getDatabasesFolder(), mAppDatabaseName + ".db");
-    }
-
     public static String getRawPath(String filename) {
-        if (mPackageName == null) {
+        if (ExternalAppConstants.getPackageName() == null) {
             throw new IllegalArgumentException("You have to call init() method first");
         }
         return String.format("android.resource://%s/raw/%s",
-                removeExtension(mPackageName), filename);
+                removeExtension(ExternalAppConstants.getPackageName()), filename);
     }
 
     public static Uri getRawUri(String filename) {
-        if (mPackageName == null) {
+        if (ExternalAppConstants.getPackageName() == null) {
             throw new IllegalArgumentException("You have to call init() method first");
         }
         Uri url = Uri.parse(String.format("android.resource://%s/raw/%s",
-                mPackageName, removeExtension(filename)));
+                ExternalAppConstants.getPackageName(), removeExtension(filename)));
         return url;
     }
 
     public static AssetFileDescriptor getAssetFileDescriptorFromRaw(String filename) {
-        if (mContext == null) {
-            throw new IllegalArgumentException("You have to call init() method first");
+        if (ExternalAppConstants.getContext() == null) {
+            throw new IllegalArgumentException("You have to call ExternalAppConstants init() method first");
         }
-        AssetFileDescriptor afd = mContext.getResources().openRawResourceFd(
-                getRawIdentifier(filename, mContext));
+        AssetFileDescriptor afd = ExternalAppConstants.getContext().getResources().openRawResourceFd(
+                getRawIdentifier(filename, ExternalAppConstants.getContext()));
         return afd;
     }
 
     public static int getRawIdentifier(String filename, Context context) {
         if(filename.contains("."))
-            filename=FileIOUtils.removeExtension(filename);
+            filename= FileUtils.removeExtension(filename);
         return context.getResources().getIdentifier(filename, "raw",
                 context.getPackageName());
     }
 
     public static String removeExtension(String filename) {
         return filename.substring(0, filename.lastIndexOf("."));
-    }
-
-    public static Bitmap getVideoPreview(String path) {
-        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
-        File mediaFile = new File(path);
-        if (!mediaFile.exists()) {//load from raw
-            AssetFileDescriptor afd = FileIOUtils.getAssetFileDescriptorFromRaw(
-                    path);
-            retriever.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-        } else {
-            retriever.setDataSource(mediaFile.getAbsolutePath());
-        }
-        try {
-            return retriever.getFrameAtTime(10000000, MediaMetadataRetriever.OPTION_CLOSEST);
-        } catch (RuntimeException ex) {
-            ex.printStackTrace();
-        } finally {
-            try {
-                retriever.release();
-            } catch (RuntimeException ex) {
-                ex.printStackTrace();
-            }
-        }
-        return null;
     }
 
     public static void removeFile(String path) {

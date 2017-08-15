@@ -1,4 +1,4 @@
-package org.eyeseetea.sdk.presentation.fileio;
+package org.eyeseetea.sdk.common;
 
 import java.io.File;
 import java.text.DecimalFormat;
@@ -17,7 +17,7 @@ public class SizeCalculator {
             if (file.exists()) {
                 fileSizeInBytes = file.length();
             } else {
-                fileSizeInBytes = FileIOUtils.getAssetFileDescriptorFromRaw(filename).getLength();
+                fileSizeInBytes = FileUtils.getAssetFileDescriptorFromRaw(filename).getLength();
             }
             // Get length of file in bytes
             // Convert the bytes to Kilobytes (1 KB = 1024 Bytes)
