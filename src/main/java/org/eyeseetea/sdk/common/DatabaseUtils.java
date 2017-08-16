@@ -14,26 +14,20 @@ public class DatabaseUtils {
     /**
      * This method returns the databases app folder
      */
-    public static File getDatabasesFolder() {
-        String databasesPath = getAppPath() + DATABASE_FOLDER;
+    public static File getDatabasesFolder(String packageName) {
+        String databasesPath = getAppPath(packageName) + DATABASE_FOLDER;
         File file = new File(databasesPath);
         return file;
     }
 
-    public static File getAppDatabaseFile() {
-        if (ExternalAppConstants.getAppDatabaseName() == null) {
-            throw new IllegalArgumentException("You have to call ExternalAppConstants init() method first");
-        }
-        return new File(getDatabasesFolder(), ExternalAppConstants.getAppDatabaseName() + ".db");
+    public static File getAppDatabaseFile(String appDatabaseName, String packageName) {
+        return new File(getDatabasesFolder(packageName), appDatabaseName + ".db");
     }
     /**
      * This method returns the app path
      */
-    public static String getAppPath() {
-        if (ExternalAppConstants.getPackageName() == null) {
-            throw new IllegalArgumentException("You have to call ExternalAppConstants init() method first");
-        }
-        return "/data/data/" + ExternalAppConstants.getPackageName() + "/";
+    public static String getAppPath(String packageName) {
+        return "/data/data/" + packageName + "/";
 
     }
 

@@ -30,6 +30,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.channels.FileChannel;
+import java.text.DecimalFormat;
 
 public class FileUtils {
 
@@ -63,48 +64,78 @@ public class FileUtils {
         }
     }
 
-    public static String getRawPath(String filename) {
-        if (ExternalAppConstants.getPackageName() == null) {
-            throw new IllegalArgumentException("You have to call init() method first");
-        }
+    private static String getRawPath(String filename, String packageName) {
         return String.format("android.resource://%s/raw/%s",
-                removeExtension(ExternalAppConstants.getPackageName()), filename);
+                removeExtension(packageName), filename);
     }
 
-    public static Uri getRawUri(String filename) {
-        if (ExternalAppConstants.getPackageName() == null) {
-            throw new IllegalArgumentException("You have to call init() method first");
-        }
+    public static Uri getRawUri(String filename, String packageName) {
         Uri url = Uri.parse(String.format("android.resource://%s/raw/%s",
-                ExternalAppConstants.getPackageName(), removeExtension(filename)));
+                packageName, removeExtension(filename)));
         return url;
     }
 
-    public static AssetFileDescriptor getAssetFileDescriptorFromRaw(String filename) {
-        if (ExternalAppConstants.getContext() == null) {
-            throw new IllegalArgumentException("You have to call ExternalAppConstants init() method first");
-        }
-        AssetFileDescriptor afd = ExternalAppConstants.getContext().getResources().openRawResourceFd(
-                getRawIdentifier(filename, ExternalAppConstants.getContext()));
+    public static AssetFileDescriptor getAssetFileDescriptorFromRaw(String filename,
+            Context context) {
+        AssetFileDescriptor afd = context.getResources().openRawResourceFd(
+                getRawIdentifier(filename, context));
         return afd;
     }
 
-    public static int getRawIdentifier(String filename, Context context) {
-        if(filename.contains("."))
-            filename= FileUtils.removeExtension(filename);
+    private static int getRawIdentifier(String filename, Context context) {
+        if (filename.contains(".")) {
+            filename = FileUtils.removeExtension(filename);
+        }
         return context.getResources().getIdentifier(filename, "raw",
                 context.getPackageName());
     }
 
-    public static String removeExtension(String filename) {
+    private static String removeExtension(String filename) {
         return filename.substring(0, filename.lastIndexOf("."));
     }
 
     public static void removeFile(String path) {
         File file = new File(path);
-        if(file.exists()){
+        if (file.exists()) {
             file.delete();
-            System.out.println("File removed "+ path);
+            System.out.println("File removed " + path);
         }
+    }
+
+    public static String getSizeInMB(String filename, Context context) {
+        String size = "0";
+        try {
+            File file = new File(filename);
+            double fileSizeInBytes;
+            if (file.exists()) {
+                fileSizeInBytes = file.length();
+            } else {
+                fileSizeInBytes = FileUtils.getAssetFileDescriptorFromRaw(filename,
+                        context).getLength();
+            }
+            // Get length of file in bytes
+            // Convert the bytes to Kilobytes (1 KB = 1024 Bytes)
+            double fileSizeInKB = fileSizeInBytes / 1024.0;
+            // Convert the KB to MegaBytes (1 MB = 1024 KBytes)
+            double fileSizeInMB = fileSizeInKB / 1024.0;
+            if (fileSizeInKB < 1024.0) {
+                size = fixDecimals(fileSizeInMB, "0.000");
+            } else {
+                size = fixDecimals(fileSizeInMB, "#.0");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return size + " MB";
+    }
+
+    private static String fixDecimals(double fileSizeInMB, String format) {
+        DecimalFormat df = new DecimalFormat(format);
+        return df.format(fileSizeInMB);
+    }
+
+    public static String removePathFromName(String filename) {
+        return filename.substring(filename.lastIndexOf("/") + 1);
     }
 }

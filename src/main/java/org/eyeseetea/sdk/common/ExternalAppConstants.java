@@ -21,10 +21,6 @@ public class ExternalAppConstants {
         return mPackageName;
     }
 
-    public static String getAppDatabaseName() {
-        return mAppDatabaseName;
-    }
-
     public static Context getContext() {
         return mContext;
     }
