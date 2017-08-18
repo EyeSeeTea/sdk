@@ -8,13 +8,8 @@ import com.google.api.services.drive.model.File;
 
 import java.io.FileOutputStream;
 import java.util.HashMap;
-import java.util.IllegalFormatCodePointException;
 import java.util.List;
 
-/**
- * AsyncTask that downloads media files
- * Created by arrizabalaga on 28/05/16.
- */
 public class DownloadMediaTask extends AsyncTask<Void, Void, HashMap<String, String>> {
 
     public interface Callback {
@@ -35,9 +30,6 @@ public class DownloadMediaTask extends AsyncTask<Void, Void, HashMap<String, Str
     private Callback mCallback;
     private final java.io.File mFilesDir;
 
-    /**
-     * Builds a task that requires service credentials
-     */
     public DownloadMediaTask(java.io.File filesDir, Drive googleService, List<String> uids,
             Callback callback) {
         mGoogleService = googleService;
