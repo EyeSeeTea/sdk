@@ -18,8 +18,6 @@ public class DownloadMediaTask extends AsyncTask<Void, Void, HashMap<String, Str
         void onCancelled(Exception mLastError);
 
         void onSuccess(HashMap<String, String> numSyncedFiles);
-
-        void removeIllegalFile(String uid);
     }
 
     public static final String QUICKTIME_NON_SUPPORTED_FORMAT = "mov";
@@ -54,9 +52,6 @@ public class DownloadMediaTask extends AsyncTask<Void, Void, HashMap<String, Str
                 syncedFiles.put(uid, resourcePath);
                 Log.d(TAG, String.format("DownloadMediaTask file synced"));
             } catch (Exception e) {
-                if (e instanceof IllegalStateException) {
-                    mCallback.removeIllegalFile(uid);
-                }
                 e.printStackTrace();
                 mLastError = e;
                 cancel(true);
@@ -88,6 +83,9 @@ public class DownloadMediaTask extends AsyncTask<Void, Void, HashMap<String, Str
                     String.format("%s format not supported in Android", fileDrive.getName()));
         }
 
+        if(!mFilesDir.exists()){
+            mFilesDir.mkdir();
+        }
         java.io.File localFile = new java.io.File(mFilesDir,
                 fileDrive.getName());
         FileOutputStream fileOutputStream = new FileOutputStream(localFile);
