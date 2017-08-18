@@ -103,25 +103,27 @@ public class FileUtils {
     }
 
     public static String getSizeInMB(String filename, Context context) {
-        String size = "0";
+        String size = "NaN";
         try {
-            File file = new File(filename);
-            double fileSizeInBytes;
-            if (file.exists()) {
-                fileSizeInBytes = file.length();
-            } else {
-                fileSizeInBytes = FileUtils.getAssetFileDescriptorFromRaw(filename,
-                        context).getLength();
-            }
-            // Get length of file in bytes
-            // Convert the bytes to Kilobytes (1 KB = 1024 Bytes)
-            double fileSizeInKB = fileSizeInBytes / 1024.0;
-            // Convert the KB to MegaBytes (1 MB = 1024 KBytes)
-            double fileSizeInMB = fileSizeInKB / 1024.0;
-            if (fileSizeInKB < 1024.0) {
-                size = fixDecimals(fileSizeInMB, "0.000");
-            } else {
-                size = fixDecimals(fileSizeInMB, "#.0");
+            if(filename!=null) {
+                File file = new File(filename);
+                double fileSizeInBytes;
+                if (file.exists()) {
+                    fileSizeInBytes = file.length();
+                } else {
+                    fileSizeInBytes = FileUtils.getAssetFileDescriptorFromRaw(filename,
+                            context).getLength();
+                }
+                // Get length of file in bytes
+                // Convert the bytes to Kilobytes (1 KB = 1024 Bytes)
+                double fileSizeInKB = fileSizeInBytes / 1024.0;
+                // Convert the KB to MegaBytes (1 MB = 1024 KBytes)
+                double fileSizeInMB = fileSizeInKB / 1024.0;
+                if (fileSizeInKB < 1024.0) {
+                    size = fixDecimals(fileSizeInMB, "0.000");
+                } else {
+                    size = fixDecimals(fileSizeInMB, "#.0");
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
