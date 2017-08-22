@@ -23,6 +23,7 @@ package org.eyeseetea.sdk.common;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.net.Uri;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,6 +34,8 @@ import java.nio.channels.FileChannel;
 import java.text.DecimalFormat;
 
 public class FileUtils {
+
+    private static final String TAG = "FileUtils";
 
     /**
      * This method copy a file in other file
@@ -150,5 +153,44 @@ public class FileUtils {
             file.delete();
             System.out.println("File removed " + path);
         }
+    }
+
+
+    public static void saveFile(String filename, byte[] fileToSave, Context context)
+            throws IOException {
+        try {
+            if (!fileExists(filename, context)) {
+                createFile(filename, context);
+            } else {
+                context.deleteFile(filename);
+                createFile(filename, context);
+            }
+            FileOutputStream outputStream = context.openFileOutput(filename, Context.MODE_PRIVATE);
+            outputStream.write(fileToSave);
+            outputStream.flush();
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw e;
+        }
+
+    }
+
+    public static boolean fileExists(String fname, Context context) {
+        File file = context.getFileStreamPath(fname);
+        return file.exists();
+    }
+
+    public static File createFile(String fileName, Context context) throws IOException {
+        boolean created;
+        File file = new File(context.getFilesDir(), fileName);
+        try {
+            created = file.createNewFile();
+        } catch (IOException e) {
+            Log.e(TAG, "Error creating new file " + fileName);
+            e.printStackTrace();
+            throw e;
+        }
+        return created ? file : null;
     }
 }
