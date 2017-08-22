@@ -94,14 +94,6 @@ public class FileUtils {
         return filename.substring(0, filename.lastIndexOf("."));
     }
 
-    public static void removeFile(String path) {
-        File file = new File(path);
-        if (file.exists()) {
-            file.delete();
-            System.out.println("File removed " + path);
-        }
-    }
-
     public static String getSizeInMB(String filename, Context context) {
         String size = "NaN";
         try {
@@ -139,5 +131,24 @@ public class FileUtils {
 
     public static String removePathFromName(String filename) {
         return filename.substring(filename.lastIndexOf("/") + 1);
+    }
+
+    public static void removeDir(String dir) {
+        File folder = new File(dir);
+        if (folder.exists() && folder.isDirectory()) {
+            File[] listOfFiles = folder.listFiles();
+            for (int i = 0; i < listOfFiles.length; i++) {
+                System.out.println("File removed " + listOfFiles[i]);
+                listOfFiles[i].delete();
+            }
+        }
+    }
+
+    public static void removeFile(String path) {
+        File file = new File(path);
+        if (file.exists()) {
+            file.delete();
+            System.out.println("File removed " + path);
+        }
     }
 }
