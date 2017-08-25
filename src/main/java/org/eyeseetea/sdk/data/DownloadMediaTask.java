@@ -18,6 +18,8 @@ public class DownloadMediaTask extends AsyncTask<Void, Void, HashMap<String, Str
         void onCancelled(Exception mLastError);
 
         void onSuccess(HashMap<String, String> numSyncedFiles);
+
+        void onProgress();
     }
 
     public static final String QUICKTIME_NON_SUPPORTED_FORMAT = "mov";
@@ -45,7 +47,7 @@ public class DownloadMediaTask extends AsyncTask<Void, Void, HashMap<String, Str
             Log.d(TAG, String.format("DownloadMediaTask nothing to sync"));
             return null;
         }
-
+        mCallback.onProgress();
         for (String uid : mUids) {
             try {
                 String resourcePath = downloadFile(uid);
