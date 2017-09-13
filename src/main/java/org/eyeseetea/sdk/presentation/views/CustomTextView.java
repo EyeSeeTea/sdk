@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import org.eyeseetea.sdk.R;
 
-public class CustomTextView extends TextView implements IEyeSeeView {
+public class CustomTextView extends android.support.v7.widget.AppCompatTextView implements IEyeSeeView {
 
     public CustomTextView(Context context) {
         super(context);

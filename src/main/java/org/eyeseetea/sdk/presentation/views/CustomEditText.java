@@ -1,13 +1,10 @@
 package org.eyeseetea.sdk.presentation.views;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.widget.EditText;
 
-import org.eyeseetea.sdk.R;
-
-public class CustomEditText extends EditText implements IEyeSeeView {
+public class CustomEditText extends android.support.v7.widget.AppCompatEditText implements
+        IEyeSeeView {
 
     public CustomEditText(Context context) {
         super(context);
@@ -29,11 +26,11 @@ public class CustomEditText extends EditText implements IEyeSeeView {
             return;
         }
 
-        CustomViewFontHelper.setFontName(this,attrs,defStyle);
+        CustomViewFontHelper.setFontName(this, attrs, defStyle);
     }
 
     public void setFontName(String fontName) {
-        CustomViewFontHelper.setFontName(this,fontName);
+        CustomViewFontHelper.setFontName(this, fontName);
     }
 }
 

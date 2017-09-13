@@ -1,7 +1,5 @@
 package org.eyeseetea.sdk.presentation.views;
 
-import static android.R.attr.textSize;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -44,9 +42,9 @@ public class CustomNumberPicker extends NumberPicker {
         TypedArray a = getContext().obtainStyledAttributes(textSizeAttr);
         int textSize = a.getDimensionPixelSize(indexOfAttrTextSize, -1);
         a.recycle();
-            if (textSize > 0) {
-                ((EditText) view).setTextSize(textSize);
-            }
+        if (textSize > 0) {
+            ((EditText) view).setTextSize(textSize);
+        }
 
     }
 }

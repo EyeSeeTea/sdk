@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.Spinner;
 
-public class CustomSpinner extends Spinner {
+public class CustomSpinner extends android.support.v7.widget.AppCompatSpinner {
     public CustomSpinner(Context context) {
         super(context);
     }

@@ -19,14 +19,11 @@
 package org.eyeseetea.sdk.presentation.views;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import org.eyeseetea.sdk.R;
-
-public class CustomRadioButton extends RadioButton implements IEyeSeeView {
+public class CustomRadioButton extends android.support.v7.widget.AppCompatRadioButton implements
+        IEyeSeeView {
     public CustomRadioButton(Context context) {
         super(context);
         init(null, 0);
@@ -47,11 +44,11 @@ public class CustomRadioButton extends RadioButton implements IEyeSeeView {
             return;
         }
 
-        CustomViewFontHelper.setFontName(this,attrs,defStyle);
+        CustomViewFontHelper.setFontName(this, attrs, defStyle);
     }
 
     public void setFontName(String fontName) {
-        CustomViewFontHelper.setFontName(this,fontName);
+        CustomViewFontHelper.setFontName(this, fontName);
     }
 
     @Override

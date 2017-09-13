@@ -20,13 +20,9 @@
 package org.eyeseetea.sdk.presentation.views;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.widget.Button;
 
-import org.eyeseetea.sdk.R;
-
-public class CustomButton extends Button implements IEyeSeeView {
+public class CustomButton extends android.support.v7.widget.AppCompatButton implements IEyeSeeView {
     public CustomButton(Context context) {
         super(context);
         init(null, 0);
@@ -47,11 +43,11 @@ public class CustomButton extends Button implements IEyeSeeView {
             return;
         }
 
-        CustomViewFontHelper.setFontName(this,attrs,defStyle);
+        CustomViewFontHelper.setFontName(this, attrs, defStyle);
     }
 
     public void setFontName(String fontName) {
-        CustomViewFontHelper.setFontName(this,fontName);
+        CustomViewFontHelper.setFontName(this, fontName);
     }
 }
 
