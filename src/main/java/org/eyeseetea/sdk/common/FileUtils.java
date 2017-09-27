@@ -30,6 +30,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.nio.channels.FileChannel;
 import java.text.DecimalFormat;
 
@@ -176,10 +177,33 @@ public class FileUtils {
 
     }
 
+    public static File saveStringToFile(String filename, String data, Context context)
+            throws IOException {
+        File file;
+        try {
+            if (!fileExists(filename, context)) {
+                file = createFile(filename, context);
+            } else {
+                context.deleteFile(filename);
+                file = createFile(filename, context);
+            }
+            FileOutputStream outputStream = context.openFileOutput(filename, Context.MODE_PRIVATE);
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
+            outputStreamWriter.write(data);
+            outputStreamWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw e;
+        }
+        return file;
+    }
+
+
     public static boolean fileExists(String fname, Context context) {
         File file = context.getFileStreamPath(fname);
         return file.exists();
     }
+
 
     public static File createFile(String fileName, Context context) throws IOException {
         boolean created;
