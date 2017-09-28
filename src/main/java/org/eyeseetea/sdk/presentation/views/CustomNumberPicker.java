@@ -1,13 +1,11 @@
 package org.eyeseetea.sdk.presentation.views;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.NumberPicker;
-
-import org.eyeseetea.sdk.R;
 
 
 public class CustomNumberPicker extends NumberPicker {
@@ -37,14 +35,7 @@ public class CustomNumberPicker extends NumberPicker {
     }
 
     private void updateView(View view) {
-        int[] textSizeAttr = new int[]{R.attr.font_small};
-        int indexOfAttrTextSize = 0;
-        TypedArray a = getContext().obtainStyledAttributes(textSizeAttr);
-        int textSize = a.getDimensionPixelSize(indexOfAttrTextSize, -1);
-        a.recycle();
-        if (textSize > 0) {
-            ((EditText) view).setTextSize(textSize);
-        }
-
+        //Using fixed size because in the library we don't know the text size preference selected
+        ((EditText) view).setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
     }
 }
