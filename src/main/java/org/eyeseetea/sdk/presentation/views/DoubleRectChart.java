@@ -1,7 +1,6 @@
 package org.eyeseetea.sdk.presentation.views;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -10,33 +9,21 @@ import org.eyeseetea.sdk.R;
 
 
 public class DoubleRectChart extends FrameLayout {
-    private FrameLayout chart;
     private LinearLayout externalRect, leftLine, rightLine;
     private CustomTextView score;
 
     public DoubleRectChart(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
-        init(context, attributeSet);
+        init(context);
     }
 
-    private void init(Context context, AttributeSet attributeSet) {
+    private void init(Context context) {
         inflate(context, R.layout.double_rect_chart, this);
 
         externalRect = (LinearLayout) findViewById(R.id.external_rect);
-        chart = (FrameLayout) findViewById(R.id.double_rect_container);
         score = (CustomTextView) findViewById(R.id.score);
         leftLine = (LinearLayout) findViewById(R.id.left_line);
         rightLine = (LinearLayout) findViewById(R.id.right_line);
-
-        int[] attrsArray = new int[]{
-                android.R.attr.layout_width,
-                android.R.attr.layout_height
-        };
-        TypedArray ta = context.obtainStyledAttributes(attributeSet, attrsArray);
-        int layout_width = ta.getDimensionPixelSize(0, FrameLayout.LayoutParams.MATCH_PARENT);
-        int layout_height = ta.getDimensionPixelSize(1, FrameLayout.LayoutParams.MATCH_PARENT);
-
-        chart.setLayoutParams(new FrameLayout.LayoutParams(layout_width, layout_height));
 
     }
 
