@@ -27,7 +27,7 @@ public class DoubleRectChart extends FrameLayout {
 
     }
 
-    public void createDoublePie(final String textScore, final int totalScore, int color,
+    public void createDoubleRectChart(final String textScore, final int scorePercentage, int color,
             int leftColor, int rightColor, int textColor) {
         externalRect.setBackgroundColor(color);
         leftLine.setBackgroundColor(leftColor);
@@ -35,20 +35,20 @@ public class DoubleRectChart extends FrameLayout {
         score.setText(textScore);
         score.setTextColor(textColor);
 
-        float leftPercentage;
-        leftPercentage = 100.0f - totalScore;
+        float restOfPercentage;
+        restOfPercentage = 100.0f - scorePercentage;
 
         LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 LayoutParams.MATCH_PARENT,
-                totalScore
+                scorePercentage
         );
         rightLine.setLayoutParams(param);
 
         param = new LinearLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 LayoutParams.MATCH_PARENT,
-                leftPercentage
+                restOfPercentage
         );
         leftLine.setLayoutParams(param);
     }
