@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/double_rect_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/external_rect"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.9"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <org.eyeseetea.sdk.presentation.views.CustomTextView
+                android:id="@+id/score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:text="100.0"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/internal_rect"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/left_line"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.2"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:id="@+id/right_line"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.8"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
