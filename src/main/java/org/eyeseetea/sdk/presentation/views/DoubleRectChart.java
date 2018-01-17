@@ -19,12 +19,11 @@ public class DoubleRectChart extends FrameLayout {
 
     private void init(Context context) {
         inflate(context, R.layout.double_rect_chart, this);
-
+        
         externalRect = (LinearLayout) findViewById(R.id.external_rect);
         score = (CustomTextView) findViewById(R.id.score);
         leftLine = (LinearLayout) findViewById(R.id.left_line);
         rightLine = (LinearLayout) findViewById(R.id.right_line);
-
     }
 
     public void createDoubleRectChart(final String textScore, final int scorePercentage, int color,
