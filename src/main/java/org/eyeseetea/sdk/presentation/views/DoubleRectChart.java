@@ -19,7 +19,7 @@ public class DoubleRectChart extends FrameLayout {
 
     private void init(Context context) {
         inflate(context, R.layout.double_rect_chart, this);
-        
+
         externalRect = (LinearLayout) findViewById(R.id.external_rect);
         score = (CustomTextView) findViewById(R.id.score);
         leftLine = (LinearLayout) findViewById(R.id.left_line);
@@ -50,5 +50,13 @@ public class DoubleRectChart extends FrameLayout {
                 restOfPercentage
         );
         leftLine.setLayoutParams(param);
+    }
+
+    public void createNaNDoubleRectChart(final String textScore, int nanColor, int textColor) {
+        externalRect.setBackgroundColor(nanColor);
+        leftLine.setBackgroundColor(nanColor);
+        rightLine.setBackgroundColor(nanColor);
+        score.setText(textScore);
+        score.setTextColor(textColor);
     }
 }
