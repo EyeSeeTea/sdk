@@ -28,6 +28,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal"
+                android:paddingBottom="2dp"
                 android:text="100.0"
                 android:textAlignment="center" />
         </LinearLayout>
