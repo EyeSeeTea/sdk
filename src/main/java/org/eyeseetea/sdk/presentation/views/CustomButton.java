@@ -20,7 +20,11 @@
 package org.eyeseetea.sdk.presentation.views;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
+
+import org.eyeseetea.sdk.common.EyeSeeTeaSdkInstance;
+import org.eyeseetea.sdk.common.Transaltor;
 
 public class CustomButton extends android.support.v7.widget.AppCompatButton implements IEyeSeeView {
     public CustomButton(Context context) {
@@ -42,6 +46,20 @@ public class CustomButton extends android.support.v7.widget.AppCompatButton impl
         if (isInEditMode()) {
             return;
         }
+
+        EyeSeeTeaSdkInstance eyeSeeTeaSdkInstance = EyeSeeTeaSdkInstance.getInstance();
+        Transaltor transaltor = eyeSeeTeaSdkInstance.getTransaltor();
+        if (transaltor != null) {
+            int[] set = {
+                    android.R.attr.text
+            };
+            TypedArray a = getContext().obtainStyledAttributes(attrs, set);
+            int stringId = a.getResourceId(0, 0);
+            String stringKey = getResources().getResourceEntryName(stringId);
+
+            setText(transaltor.getTranslation(stringKey,getContext()));
+        }
+
 
         CustomViewFontHelper.setFontName(this, attrs, defStyle);
     }
