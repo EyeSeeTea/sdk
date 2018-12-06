@@ -10,4 +10,8 @@ public interface IEyeSeeView {
     void setFontName(String fontName);
 
     Context getContext();
+
+    void translateText(int textId);
+
+    void translateHint(int hintId);
 }

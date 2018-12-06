@@ -45,6 +45,7 @@ public class CustomRadioButton extends android.support.v7.widget.AppCompatRadioB
         }
 
         CustomViewFontHelper.setFontName(this, attrs, defStyle);
+        CustomViewTranslationHelper.translateTextsViews(getContext(),attrs,this);
     }
 
     public void setFontName(String fontName) {
@@ -64,5 +65,15 @@ public class CustomRadioButton extends android.support.v7.widget.AppCompatRadioB
         } else {
             setChecked(true);
         }
+    }
+
+    @Override
+    public void translateText(int textId) {
+        CustomViewTranslationHelper.translateText(textId, this);
+    }
+
+    @Override
+    public void translateHint(int hintId) {
+        CustomViewTranslationHelper.translateHint(hintId, this);
     }
 }
