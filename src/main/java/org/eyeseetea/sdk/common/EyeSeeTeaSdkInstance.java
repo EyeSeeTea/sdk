@@ -5,6 +5,8 @@ public class EyeSeeTeaSdkInstance {
     private static EyeSeeTeaSdkInstance mInstance;
     private Transaltor mTransaltor;
 
+    private EyeSeeTeaSdkInstance() {
+    }
 
     public static EyeSeeTeaSdkInstance getInstance() {
         if (mInstance == null) {
@@ -13,11 +15,11 @@ public class EyeSeeTeaSdkInstance {
         return mInstance;
     }
 
-    public Transaltor getTransaltor() {
+    public Transaltor getTranslator() {
         return mTransaltor;
     }
 
-    public void setTransaltor(Transaltor transaltor) {
+    public void initTranslator(Transaltor transaltor) {
         mTransaltor = transaltor;
     }
 }

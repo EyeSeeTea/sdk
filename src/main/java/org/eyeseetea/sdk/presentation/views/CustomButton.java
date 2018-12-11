@@ -53,12 +53,12 @@ public class CustomButton extends android.support.v7.widget.AppCompatButton impl
     }
 
     @Override
-    public void translateText(int textId) {
+    public void setTextTranslation(int textId) {
         CustomViewTranslationHelper.translateText(textId, this);
     }
 
     @Override
-    public void translateHint(int hintId) {
+    public void setHintTranslation(int hintId) {
         CustomViewTranslationHelper.translateHint(hintId, this);
     }
 }

@@ -11,7 +11,7 @@ public interface IEyeSeeView {
 
     Context getContext();
 
-    void translateText(int textId);
+    void setTextTranslation(int textId);
 
-    void translateHint(int hintId);
+    void setHintTranslation(int hintId);
 }
