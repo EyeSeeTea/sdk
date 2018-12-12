@@ -43,11 +43,23 @@ public class CustomButton extends android.support.v7.widget.AppCompatButton impl
             return;
         }
 
+        CustomViewTranslationHelper.translateTextsViews(getContext(), attrs, this);
+
         CustomViewFontHelper.setFontName(this, attrs, defStyle);
     }
 
     public void setFontName(String fontName) {
         CustomViewFontHelper.setFontName(this, fontName);
+    }
+
+    @Override
+    public void setTextTranslation(int textId) {
+        CustomViewTranslationHelper.translateText(textId, this);
+    }
+
+    @Override
+    public void setHintTranslation(int hintId) {
+        CustomViewTranslationHelper.translateHint(hintId, this);
     }
 }
 

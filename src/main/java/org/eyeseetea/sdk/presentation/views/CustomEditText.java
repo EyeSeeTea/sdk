@@ -27,10 +27,22 @@ public class CustomEditText extends android.support.v7.widget.AppCompatEditText 
         }
 
         CustomViewFontHelper.setFontName(this, attrs, defStyle);
+
+        CustomViewTranslationHelper.translateTextsViews(getContext(),attrs,this);
     }
 
     public void setFontName(String fontName) {
         CustomViewFontHelper.setFontName(this, fontName);
+    }
+
+    @Override
+    public void setTextTranslation(int textId) {
+        CustomViewTranslationHelper.translateText(textId, this);
+    }
+
+    @Override
+    public void setHintTranslation(int hintId) {
+        CustomViewTranslationHelper.translateHint(hintId, this);
     }
 }
 
