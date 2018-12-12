@@ -1,6 +1,7 @@
 package org.eyeseetea.sdk.presentation.views;
 
 import android.content.Context;
+import android.support.annotation.IdRes;
 import android.util.AttributeSet;
 
 public interface IEyeSeeView {
@@ -11,7 +12,7 @@ public interface IEyeSeeView {
 
     Context getContext();
 
-    void setTextTranslation(int textId);
+    void setTextTranslation(@IdRes int textId);
 
-    void setHintTranslation(int hintId);
+    void setHintTranslation(@IdRes int hintId);
 }

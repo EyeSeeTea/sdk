@@ -6,13 +6,12 @@ import android.support.annotation.StringRes;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import org.eyeseetea.sdk.common.EyeSeeTeaSdkInstance;
+import org.eyeseetea.sdk.common.EyeSeeTeaSdk;
 import org.eyeseetea.sdk.common.Transaltor;
 
 public class CustomViewTranslationHelper {
     public static void translateTextsViews(Context context, AttributeSet attrs, TextView view) {
-        EyeSeeTeaSdkInstance eyeSeeTeaSdkInstance = EyeSeeTeaSdkInstance.getInstance();
-        Transaltor transaltor = eyeSeeTeaSdkInstance.getTranslator();
+        Transaltor transaltor = EyeSeeTeaSdk.getInstance().getTranslator();
         if (transaltor != null) {
             int[] set = {
                     android.R.attr.text,
@@ -33,16 +32,14 @@ public class CustomViewTranslationHelper {
     }
 
     public static void translateText(int textId, TextView textView) {
-        EyeSeeTeaSdkInstance eyeSeeTeaSdkInstance = EyeSeeTeaSdkInstance.getInstance();
-        Transaltor transaltor = eyeSeeTeaSdkInstance.getTranslator();
+        Transaltor transaltor = EyeSeeTeaSdk.getInstance().getTranslator();
         if (transaltor != null) {
             textView.setText(getTranslatedString(textId, textView.getContext(), transaltor));
         }
     }
 
     public static void translateHint(int hintId, TextView textView) {
-        EyeSeeTeaSdkInstance eyeSeeTeaSdkInstance = EyeSeeTeaSdkInstance.getInstance();
-        Transaltor transaltor = eyeSeeTeaSdkInstance.getTranslator();
+        Transaltor transaltor = EyeSeeTeaSdk.getInstance().getTranslator();
         if (transaltor != null) {
             textView.setHint(getTranslatedString(hintId, textView.getContext(), transaltor));
         }
