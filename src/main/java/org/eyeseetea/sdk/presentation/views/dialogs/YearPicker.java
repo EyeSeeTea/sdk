@@ -8,20 +8,24 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.eyeseetea.sdk.R;
 import org.eyeseetea.sdk.presentation.views.CustomNumberPicker;
+import org.eyeseetea.sdk.presentation.views.CustomTextView;
 
 import java.util.Calendar;
 
 public class YearPicker extends DialogFragment {
     private int mYearInterval = 120;
 
+    private CustomTextView mTitleTextView;
     private OnYearSelectedListener mOnYearSelectedListener;
     private CustomNumberPicker mNumberPicker;
     private Button ok, cancel;
     private int maxYear = 0, minYear = 0;
     private Context mContext;
+    private String mTitle;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -38,7 +42,18 @@ public class YearPicker extends DialogFragment {
         mYearInterval = yearInterval;
     }
 
+    public void setTitle (String title){
+        mTitle = title;
+
+        if (mTitleTextView != null){
+            mTitleTextView.setText(mTitle);
+        }
+    }
+
     private void initViews(final Dialog dialog) {
+        mTitleTextView = (CustomTextView) dialog.findViewById(R.id.questionHeader);
+        mTitleTextView.setText(mTitle);
+
         mNumberPicker = (CustomNumberPicker) dialog.findViewById(R.id.year_picker);
         mNumberPicker.setMaxValue(maxYear);
         mNumberPicker.setMinValue(minYear);
