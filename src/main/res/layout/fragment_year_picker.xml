@@ -14,7 +14,7 @@
         android:gravity="left"
         android:cursorVisible="true"
         android:singleLine="true"
-        android:text="edededede"
+        android:text=""
         android:textColor="@android:color/black"
         android:textSize="?attr/font_large"
         app:font_name="@string/bold_font"
