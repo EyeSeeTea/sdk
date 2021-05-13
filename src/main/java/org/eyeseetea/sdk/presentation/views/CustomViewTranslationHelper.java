@@ -2,7 +2,7 @@ package org.eyeseetea.sdk.presentation.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 import android.util.AttributeSet;
 import android.widget.TextView;
 

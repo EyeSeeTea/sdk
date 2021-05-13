@@ -3,7 +3,7 @@ package org.eyeseetea.sdk.presentation.views;
 import android.content.Context;
 import android.util.AttributeSet;
 
-public class CustomEditText extends android.support.v7.widget.AppCompatEditText implements
+public class CustomEditText extends androidx.appcompat.widget.AppCompatEditText implements
         IEyeSeeView {
 
     public CustomEditText(Context context) {

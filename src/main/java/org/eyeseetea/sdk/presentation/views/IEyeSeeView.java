@@ -1,7 +1,7 @@
 package org.eyeseetea.sdk.presentation.views;
 
 import android.content.Context;
-import android.support.annotation.IdRes;
+import androidx.annotation.IdRes;
 import android.util.AttributeSet;
 
 public interface IEyeSeeView {
