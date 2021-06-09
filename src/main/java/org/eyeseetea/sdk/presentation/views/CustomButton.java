@@ -22,7 +22,7 @@ package org.eyeseetea.sdk.presentation.views;
 import android.content.Context;
 import android.util.AttributeSet;
 
-public class CustomButton extends android.support.v7.widget.AppCompatButton implements IEyeSeeView {
+public class CustomButton extends androidx.appcompat.widget.AppCompatButton implements IEyeSeeView {
     public CustomButton(Context context) {
         super(context);
         init(null, 0);

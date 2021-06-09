@@ -22,7 +22,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RadioGroup;
 
-public class CustomRadioButton extends android.support.v7.widget.AppCompatRadioButton implements
+public class CustomRadioButton extends androidx.appcompat.widget.AppCompatRadioButton implements
         IEyeSeeView {
     public CustomRadioButton(Context context) {
         super(context);

@@ -1,14 +1,9 @@
 package org.eyeseetea.sdk.presentation.views;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.widget.EditText;
-import android.widget.TextView;
 
-import org.eyeseetea.sdk.R;
-
-public class CustomTextView extends android.support.v7.widget.AppCompatTextView implements IEyeSeeView {
+public class CustomTextView extends androidx.appcompat.widget.AppCompatTextView implements IEyeSeeView {
 
     public CustomTextView(Context context) {
         super(context);

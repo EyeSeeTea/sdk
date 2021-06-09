@@ -2,9 +2,8 @@ package org.eyeseetea.sdk.presentation.views;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.Spinner;
 
-public class CustomSpinner extends android.support.v7.widget.AppCompatSpinner {
+public class CustomSpinner extends androidx.appcompat.widget.AppCompatSpinner {
     public CustomSpinner(Context context) {
         super(context);
     }
