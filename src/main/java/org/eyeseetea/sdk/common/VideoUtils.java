@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 
 import java.io.File;
+import java.io.IOException;
 
 public class VideoUtils {
 
@@ -24,10 +25,11 @@ public class VideoUtils {
             return retriever.getFrameAtTime(10000000, MediaMetadataRetriever.OPTION_CLOSEST);
         } catch (RuntimeException ex) {
             ex.printStackTrace();
+
         } finally {
             try {
                 retriever.release();
-            } catch (RuntimeException ex) {
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
         }
